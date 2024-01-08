@@ -5,6 +5,30 @@
 {% block body %}
     <div class="container">
         <p>Ports compatibles</p>
-        <p>Type de navire : {{ aisShipType.id }}</p>        
+        <p>Type de navire : {{ aisShipType.id }} {{ aisShipType.libelle }}</p>  
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col" style="width: 100px;">Indicatif</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Pays</th>
+                    <th scope="col">Voir</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for port in portsCompatibles %}
+                    <tr class="table-primary">
+                        <td>{{ port.portIndicatif }}</td>
+                        <td>{{ port.portNom }}</td>
+                        <td>{{ port.paysNom }}</td>
+                        <td>
+                            <a href="#">{{ port.paysNom }}</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
     </div>
 {% endblock %}

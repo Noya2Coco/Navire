@@ -20,6 +20,19 @@ class AisShipTypeRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, AisShipType::class);
     }
+    
+    public function findPortsCompatiblesByAisShipType(string $id): array {        
+        $query = $this->createQueryBuilder('ast')
+                ->select('p.indicatif as portIndicatif', 'p.nom as portNom', 'pay.nom as paysNom', 'n.id as navireId')
+                ->innerJoin('ast.portsCompatibles', 'p')
+                ->innerJoin('p.pays', 'pay')
+                ->leftJoin('p.navires', 'n')
+                ->where('ast.id = :aisShipTypeId')
+                ->setParameter('aisShipTypeId', $id)
+                ->getQuery();
+
+        return $query->getResult();
+    }
 
 //    /**
 //     * @return AisShipType[] Returns an array of AisShipType objects
