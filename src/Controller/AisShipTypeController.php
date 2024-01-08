@@ -26,6 +26,7 @@ class AisShipTypeController extends AbstractController
     public function portsCompatibles(Request $request, AisShipTypeRepository $repo): Response
     {
         $aisShipType = $repo->find($request->get('id'));
+        
         return $this->render('aisshiptype/portscompatibles.html.twig', [
             'controller_name' => 'AisShipTypeController',
             'aisShipType' => $aisShipType,
