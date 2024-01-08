@@ -18,7 +18,7 @@
                         <td>{{ type.aisshiptype }}</td>
                         <td>{{ type.libelle }}</td>
                         <td>
-                            <a href="#">Ports compatibles</a>
+                            <a href="{{ path('aisshiptype_portscompatibles', {id: type.id}) }}">Ports compatibles</a>
                         </td>
                     </tr>
                 {% endfor %}
